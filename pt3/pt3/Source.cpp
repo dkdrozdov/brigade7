@@ -4,10 +4,10 @@
 A, A*D, A*D^2, A*D^3 . . .
 */
 #include <stdio.h>
-#include <locale.h>
+#include <locale.h>                            
+#include <conio.h>
 #include <iostream>
 #include <windows.h>
-#include <limits.h>
 
 int main()
 {
@@ -33,5 +33,5 @@ int main()
       printf_s("%lld ", S[i]);
    }
 
-   return 0;
+   return 0 * _getch();
 }  
