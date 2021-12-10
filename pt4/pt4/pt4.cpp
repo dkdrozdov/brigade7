@@ -1,7 +1,4 @@
-﻿/*String4. Дано целое число N (1 ≤ N ≤ 26).
-Вывести N первых прописных (то есть заглавных) букв латинского алфавита.
-*/
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <locale.h>                            
 #include <conio.h>
 #include <iostream>
@@ -19,10 +16,9 @@ int main()
    scanf_s("%hu", &N);
 
 
-   char c = 'A';
+   char S[27] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
    for (int i = 0; i < N; i++) {
-      printf_s("%c ", c);
-      c = (char)((int)c + 1);
+      printf_s("%c ", S[i]);
    }
 
    SetConsoleCP(inCp);
