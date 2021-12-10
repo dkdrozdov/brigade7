@@ -4,34 +4,30 @@
 A, A*D, A*D^2, A*D^3 . . .
 */
 #include <stdio.h>
-#include <locale.h>                            
 #include <conio.h>
-#include <iostream>
 #include <windows.h>
+USHORT const nmax = 100;
 
 int main()
 {
-   setlocale(LC_ALL, "");
-   USHORT const N_MAX = 100;
+   UINT inCp = GetConsoleCP(), outCp = GetConsoleOutputCP();
+   SetConsoleCP(1251);
+   SetConsoleOutputCP(1251);
    USHORT N = 0;
-   LONG64 A = 0, D = 0, S[N_MAX];
-   bool isInputCorrect = false;
-   
-   while (!isInputCorrect){
-      printf_s("Введите размер массива, первый член и знаменатель геометрической прогрессии: ");
-      scanf_s("%hu %lld %lld", &N, &A, &D);
-      if (N > N_MAX)
-         printf_s("Введённый размер массива слишком большой!\n");
-      else
-         isInputCorrect = true;
-   }
+   LONG64 A = 0, D = 0, S[nmax];
+
+   printf_s("Введите размер массива, первый член и знаменатель геометрической прогрессии: ");
+   scanf_s("%hu %lld %lld", &N, &A, &D);
 
    S[0] = A;
    printf_s("%lld ", S[0]);
    for (int i = 1; i < N; i++) {
-      S[i] = S[i-1] * D;
+      S[i] = S[i - 1] * D;
       printf_s("%lld ", S[i]);
    }
+
+   SetConsoleCP(inCp);
+   SetConsoleOutputCP(outCp);
 
    return 0 * _getch();
 }  
