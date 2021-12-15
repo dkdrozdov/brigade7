@@ -5,15 +5,16 @@ Param4.
 С помощью этой процедуры инвертировать массивы A, B, C размера NA, NB, NC соответственно.
 */
 
-
 #include <stdio.h>                      
 #include <conio.h>
 #include <windows.h>
-const USHORT nmax = 500;
+
+const USHORT nmax = 100;
 
 void Invert(float* A, int N) 
 {
    float temp = 0;
+
    for (int i = 0, j = N - 1; i < N/2; i++, j--)
    {
       temp = A[i];
@@ -29,7 +30,7 @@ int main()
    SetConsoleOutputCP(1251);
 
    USHORT N = 0;
-   float A[nmax];
+   float A[nmax] = {};
 
    printf_s("Введите размер массива: ");
    scanf_s("%hu", &N);
@@ -41,9 +42,10 @@ int main()
    }
 
    Invert(A, N);
+
    for (int i = 0; i < N; i++)
    {
-      printf_s("%d: %4.2f", i, A[i]);
+      printf_s("%4.2f ", A[i]);
    }
 
    SetConsoleCP(inCp);
