@@ -9,9 +9,9 @@ Param4.
 #include <conio.h>
 #include <windows.h>
 
-const USHORT nmax = 100;
+const USHORT Nmax = 100;
 
-void Invert(float* A, int N) 
+void Invert(float* A, USHORT N)
 {
    float temp = 0;
 
