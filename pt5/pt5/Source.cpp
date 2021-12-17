@@ -11,7 +11,7 @@ Param4.
 
 const USHORT Nmax = 100;
 
-void Invert(float* A, USHORT N)
+void Invert(float *A, USHORT N)
 {
    float temp = 0;
 
@@ -30,7 +30,7 @@ int main()
    SetConsoleOutputCP(1251);
 
    USHORT N = 0;
-   float A[nmax] = {};
+   float A[Nmax] = {};
 
    printf_s("¬ведите размер массива: ");
    scanf_s("%hu", &N);
