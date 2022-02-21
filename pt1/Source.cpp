@@ -21,16 +21,6 @@ struct list {
 		return current == NULL || current->elem == stop ? NULL : current;
 	}
 
-	void MoveToStringEnd(list *prev) 
-	{
-		if (prev != NULL)
-			prev->next = next;
-		list *stringEnd = GetStringEnd();
-		if (this != stringEnd)
-			next = stringEnd->next;
-			stringEnd->next = this;
-	}
-
 	list* GetStringEnd() 
 	{
 		list *current = this;
@@ -63,8 +53,13 @@ struct list {
 
 } *p = new list(true, new list);
 
-void readFile(list *dest, FILE *pFile) 
+int Input() 
 {
+	FILE* pFile;
+	fopen_s(&pFile, "test.txt", "r");
+	if (pFile == 0) {
+		return 1;
+	}
 	list* current = p->next;
 	if (pFile != NULL)
 	{
@@ -73,18 +68,15 @@ void readFile(list *dest, FILE *pFile)
 			current = current->next;
 		}
 	}
+	fclose(pFile);
+
+	return 0;
 }
 
 int main()
 {
-	FILE* pFile;
-	fopen_s(&pFile, "test.txt", "r");
-	if (pFile != 0) {
-		readFile(p, pFile);
-		fclose(pFile);
-	}
-	else
-		return 1;
+	if (Input() != 0)
+		return 0;
 
 	char c = 'x';
 	list *matched = new list(true);
@@ -99,6 +91,7 @@ int main()
 			matched->GetStringEnd()->next = current;
 			current = prev->FindElem(c, separator);
 		}
+
 		matched->GetStringEnd()->next = prev->GetStringEnd()->next;
 		prev->GetStringEnd()->next = matched->next;
 		matched->next = NULL;
