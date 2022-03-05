@@ -11,6 +11,7 @@ struct list {
    list(char _elem = NULL, list* _next = NULL) : elem(_elem), next(_next) {}
 
    list* getStringEnd() {
+       if (this == NULL) return NULL;
       list* c = this;
       while (c->next != NULL && c->next->elem != separator && c->next->elem != endChar)
          c = c->next;
@@ -85,6 +86,28 @@ struct list {
         if (next == NULL) return this;
         list* h = new list(NULL, this);
         list* first = h;
+        list* seqHead = this->findElem(t);
+        list* seqEnd = seqHead->getSequenceEnd();
+        list* strEnd = seqEnd->getStringEnd();
+
+        while (seqHead != NULL) {
+            if (seqEnd != strEnd) {
+                seqHead->moveSequenceTo(seqEnd, strEnd, seqHead->findPrev(first));
+            }
+            else {
+                first = strEnd->next;
+            }
+            seqHead = first->findElem(t);
+            seqEnd = seqHead->getSequenceEnd();
+            strEnd = seqEnd->getStringEnd();
+        }
+        first = h->next;
+        delete h;
+        return first;
+        /*
+        if (next == NULL) return this;
+        list* h = new list(NULL, this);
+        list* first = h;
         list* sHead = this->findElem(t);
         list* sEnd = sHead->getSequenceEnd();
         list* lastHead = sHead->getStringEnd();
@@ -108,6 +131,7 @@ struct list {
         first = h->next;
         delete h;
         return first;
+        */
     }
 };
 
