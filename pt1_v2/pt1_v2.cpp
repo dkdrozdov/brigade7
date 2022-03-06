@@ -61,27 +61,6 @@ struct list {
        return c;
     }
 
-    bool isInSequence(list* sHead) {
-       if (this == NULL) return NULL;
-       list* c = sHead;
-       while (c->next != NULL && c->next->elem == elem && c != this) c = c->next;
-       return c == this ? true : false;
-    }
-
-    list* getSequenceHead(list* h) {
-       if (this == NULL) return NULL;
-       list* sHead = h->findElem(this->elem);
-       list* c = sHead;
-       while (sHead != NULL) {
-         while (c != NULL && c != this && sHead != this) {
-            c = c->next;
-         }
-         if (c == this) return sHead;
-         sHead = c->findElem(this->elem);
-       }
-       return NULL;
-    }
-
     list* moveToStringEnd(char t){
         if (next == NULL) return this;
         list* h = new list(NULL, this);
@@ -104,34 +83,6 @@ struct list {
         first = h->next;
         delete h;
         return first;
-        /*
-        if (next == NULL) return this;
-        list* h = new list(NULL, this);
-        list* first = h;
-        list* sHead = this->findElem(t);
-        list* sEnd = sHead->getSequenceEnd();
-        list* lastHead = sHead->getStringEnd();
-        if (lastHead != NULL && lastHead->elem == t) {
-           lastHead = lastHead->getSequenceHead(first);
-        }
-
-        while (sHead != NULL) {
-            if(lastHead != sHead && lastHead != sEnd){
-                lastHead = sHead->getStringEnd();
-                sHead->moveSequenceTo(sEnd, lastHead, sHead->findPrev(h));
-                if(lastHead != NULL && lastHead->elem != t) lastHead = sHead;
-                sHead = first->next->findElem(t);
-            }
-            else {
-                first = sHead->getStringEnd()->next;
-                sHead = first->findElem(t);
-                sEnd = sHead->getSequenceEnd();
-            }
-        }
-        first = h->next;
-        delete h;
-        return first;
-        */
     }
 };
 
@@ -167,8 +118,6 @@ list* readFile() {
 
     return p;
 }
-
-
 
 int main() {
     readFile()->moveToStringEnd(target)->print();
