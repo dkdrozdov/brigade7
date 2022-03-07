@@ -11,7 +11,7 @@ struct list {
    list(char _elem = NULL, list* _next = NULL) : elem(_elem), next(_next) {}
 
    list* getStringEnd() {
-       if (this == NULL) return NULL;
+      if (this == NULL) return NULL;
       list* c = this;
       while (c->next != NULL && c->next->elem != separator && c->next->elem != endChar)
          c = c->next;
@@ -54,72 +54,72 @@ struct list {
       }
    }
 
-    list* getSequenceEnd() {
-       if (this == NULL) return NULL;
-       list* c = this;
-       while (c->next != NULL && c->next->elem == elem) c = c->next;
-       return c;
-    }
+   list* getSequenceEnd() {
+      if (this == NULL) return NULL;
+      list* c = this;
+      while (c->next != NULL && c->next->elem == elem) c = c->next;
+      return c;
+   }
 
-    list* moveToStringEnd(char t){
-        if (next == NULL) return this;
-        list* h = new list(NULL, this);
-        list* first = h;
-        list* seqHead = this->findElem(t);
-        list* seqEnd = seqHead->getSequenceEnd();
-        list* strEnd = seqEnd->getStringEnd();
+   list* moveToStringEnd(char t) {
+      if (next == NULL) return this;
+      list* h = new list(NULL, this);
+      list* first = h;
+      list* seqHead = this->findElem(t);
+      list* seqEnd = seqHead->getSequenceEnd();
+      list* strEnd = seqEnd->getStringEnd();
 
-        while (seqHead != NULL) {
-            if (seqEnd != strEnd) {
-                seqHead->moveSequenceTo(seqEnd, strEnd, seqHead->findPrev(first));
-            }
-            else {
-                first = strEnd->next;
-            }
-            seqHead = first->findElem(t);
-            seqEnd = seqHead->getSequenceEnd();
-            strEnd = seqEnd->getStringEnd();
-        }
-        first = h->next;
-        delete h;
-        return first;
-    }
+      while (seqHead != NULL) {
+         if (seqEnd != strEnd) {
+            seqHead->moveSequenceTo(seqEnd, strEnd, seqHead->findPrev(first));
+         }
+         else {
+            first = strEnd->next;
+         }
+         seqHead = first->findElem(t);
+         seqEnd = seqHead->getSequenceEnd();
+         strEnd = seqEnd->getStringEnd();
+      }
+      first = h->next;
+      delete h;
+      return first;
+   }
 };
 
 list* readFile() {
-    list *p = NULL;
-    list *current = NULL;
-    FILE *fp;
+   list* p = NULL;
+   list* current = NULL;
+   FILE* fp;
 
-    fopen_s(&fp, "test.txt", "r");
-    if (fp == 0)
-        return NULL;
+   fopen_s(&fp, "test.txt", "r");
+   if (fp == 0)
+      return NULL;
 
-    target = fgetc(fp);
-    fgetc(fp);
+   target = fgetc(fp);
+   fgetc(fp);
 
-    char c = fgetc(fp);
+   char c = fgetc(fp);
 
-    while (c != EOF) {
-        if (current == NULL)
-        {
-            p = new list();
-            current = p;
-        }
-        else {
-            current->next = new list();
-            current = current->next;
-        }
-        current->elem = c;
+   while (c != EOF) {
+      if (current == NULL)
+      {
+         p = new list();
+         current = p;
+      }
+      else {
+         current->next = new list();
+         current = current->next;
+      }
+      current->elem = c;
 
-        c = fgetc(fp);
-    }
-    fclose(fp);
+      c = fgetc(fp);
+   }
+   fclose(fp);
 
-    return p;
+   return p;
 }
 
 int main() {
-    readFile()->moveToStringEnd(target)->print();
-    return 0;
+   readFile()->moveToStringEnd(target)->print();
+   return 0;
 }
