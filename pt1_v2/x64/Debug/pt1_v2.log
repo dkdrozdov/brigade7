@@ -1,3 +1,3 @@
 ﻿  pt1_v2.cpp
-Z:\brigade7\pt1_v2\pt1_v2.cpp(41): warning C4715: list::findPrev: значение возвращается не при всех путях выполнения
-  pt1_v2.vcxproj -> Z:\brigade7\pt1_v2\x64\Debug\pt1_v2.exe
+C:\Users\Алиска\Documents\home\education\bachelor\2-semester\data-structures-and-algorithms\brigade7\pt1_v2\pt1_v2.cpp(41): warning C4715: 'list::findPrev': not all control paths return a value
+  pt1_v2.vcxproj -> C:\Users\Алиска\Documents\home\education\bachelor\2-semester\data-structures-and-algorithms\brigade7\pt1_v2\x64\Debug\pt1_v2.exe
