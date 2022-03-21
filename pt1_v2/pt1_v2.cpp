@@ -19,12 +19,6 @@ struct list
       return c;
    }
 
-   void print()
-   {
-      for (list *c = this; c; c = c->next)
-         printf("%c", c->elem);
-   }
-
    list *findElem(char s)    			// Поиск первого вхождения элемента s
    {
       list *c = this;
@@ -36,8 +30,8 @@ struct list
    {                         			// h - первый элемент в списке
       list *c = h;
       if (h == this) return NULL;
-      for (; c && c->next != this; c = c->next)
-         return c;
+      for (; c && c->next != this; c = c->next);
+      return c;
    }
 
    void moveSequenceTo(list *sEnd, list *t, list *prev)
@@ -82,14 +76,26 @@ struct list
       delete h;
       return first;
    }
+
+   void output()
+   {
+      FILE *fp;
+
+      fopen_s(&fp, "output.txt", "w");
+      if (!fp) return;
+
+      for (list *c = this; c; c = c->next)
+         fputc(c->elem, fp);
+      fclose(fp);
+   }
 };
 
-list *readFile()
+list *input()
 {
    list *p = NULL, *current = NULL;
    FILE *fp;
 
-   fopen_s(&fp, "test.txt", "r");
+   fopen_s(&fp, "input.txt", "r");
    if (!fp) return NULL;
 
    target = fgetc(fp);
@@ -114,6 +120,6 @@ list *readFile()
 
 int main()
 {
-   readFile()->moveToStringEnd(target)->print();
+   input()->moveToStringEnd(target)->output();
    return 0;
 }
