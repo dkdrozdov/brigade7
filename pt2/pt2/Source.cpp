@@ -72,6 +72,7 @@ struct queue
       for (; pop(&i); q.push(i))
          printf_s("%c ", i);
       for (; q.pop(&i); push(i));
+      printf_s("\n");
    }
 };
 
@@ -81,27 +82,31 @@ int main()
    SetConsoleCP(1251);
    SetConsoleOutputCP(1251);
 
+   printf_s("\nВыберите команду: \n");
+   printf_s("%c - Вывести очередь\n", PRINT);
+   printf_s("%c - Очистить очередь\n", CLEAR);
+   printf_s("%c - Добавить элемент в очередь\n", PUSH);
+   printf_s("%c - Вытолкнуть элемент из очереди\n", POP);
+   printf_s("%c - Проверить, пуста ли очередь\n", EMPTY);
+   printf_s("%c - Завершить работу\n", EXIT);
+
    queue *q = new queue;
    bool repeat = true;
    do
    {
       char cmd = 0, elem = 0;
-      printf_s("\nВыберите команду: \n");
-      printf_s("%c - Вывести очередь\n", PRINT);
-      printf_s("%c - Очистить очередь\n", CLEAR);
-      printf_s("%c - Добавить элемент в очередь\n", PUSH);
-      printf_s("%c - Вытолкнуть элемент из очереди\n", POP);
-      printf_s("%c - Проверить, пуста ли очередь\n", EMPTY);
-      printf_s("%c - Завершить работу\n", EXIT);
+
       printf_s("Действие: ");
       scanf_s("\n%c", &cmd, 1);
 
       switch (cmd)
       {
       case PRINT:
+         printf_s("Содержимое очереди:\n");
          q->print();
          break;
       case CLEAR:
+         printf_s("Очередь очищена.\n");
          q->clear();
          break;
       case PUSH:
