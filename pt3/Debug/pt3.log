@@ -1,8 +1,2 @@
 ﻿  Source.cpp
-  stack.cpp
-  tree.cpp
-  Создание кода...
-tree.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: __thiscall stack<struct tree *>::stack<struct tree *>(struct list<struct tree *> *,struct list<struct tree *> *)" (??0?$stack@PAUtree@@@@QAE@PAU?$list@PAUtree@@@@0@Z) в функции "public: struct tree * __thiscall tree::input(void)" (?input@tree@@QAEPAU1@XZ)
-tree.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: void __thiscall stack<struct tree *>::push(struct tree *)" (?push@?$stack@PAUtree@@@@QAEXPAUtree@@@Z) в функции "public: struct tree * __thiscall tree::input(void)" (?input@tree@@QAEPAU1@XZ)
-tree.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: bool __thiscall stack<struct tree *>::pop(struct tree * *)" (?pop@?$stack@PAUtree@@@@QAE_NPAPAUtree@@@Z) в функции "public: struct tree * __thiscall tree::input(void)" (?input@tree@@QAEPAU1@XZ)
-Z:\brigade7\pt3\Debug\pt3.exe : fatal error LNK1120: неразрешенных внешних элементов: 3
+  pt3.vcxproj -> Z:\brigade7\pt3\Debug\pt3.exe
