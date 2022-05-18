@@ -1,24 +1,5 @@
-﻿  list.cpp
-Z:\brigade7\pt3\stack.h(9,9): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
-Z:\brigade7\pt3\stack.h(9,9): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
-Z:\brigade7\pt3\stack.h(9,13): error C2238: непредвиденные лексемы перед ";"
-Z:\brigade7\pt3\stack.h(11,21): error C2061: синтаксическая ошибка: идентификатор "list"
-Z:\brigade7\pt3\stack.h(12,19): error C2061: синтаксическая ошибка: идентификатор "tree"
-Z:\brigade7\pt3\stack.h(13,18): error C2061: синтаксическая ошибка: идентификатор "tree"
-Z:\brigade7\pt3\stack.h(14,9): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
-Z:\brigade7\pt3\stack.h(14,9): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
-Z:\brigade7\pt3\stack.h(14,15): error C2238: непредвиденные лексемы перед ";"
-  Source.cpp
-Z:\brigade7\pt3\Source.cpp(10,22): error C2512: tree::tree: нет подходящего конструктора по умолчанию
+﻿  Source.cpp
   stack.cpp
   tree.cpp
-Z:\brigade7\pt3\list.h(8,9): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
-Z:\brigade7\pt3\list.h(8,9): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
-Z:\brigade7\pt3\list.h(8,14): error C2238: непредвиденные лексемы перед ";"
-Z:\brigade7\pt3\list.h(11,34): error C2061: синтаксическая ошибка: идентификатор "tree"
-Z:\brigade7\pt3\stack.h(12,19): error C2061: синтаксическая ошибка: идентификатор "tree"
-Z:\brigade7\pt3\stack.h(13,18): error C2061: синтаксическая ошибка: идентификатор "tree"
-Z:\brigade7\pt3\stack.h(14,9): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
-Z:\brigade7\pt3\stack.h(14,9): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
-Z:\brigade7\pt3\stack.h(14,15): error C2238: непредвиденные лексемы перед ";"
-  Создание кода...
+  Generating Code...
+  pt3.vcxproj -> D:\prog\brigade7\pt3\Debug\pt3.exe

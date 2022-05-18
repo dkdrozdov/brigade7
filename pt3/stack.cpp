@@ -1,9 +1,8 @@
-#pragma once
-#include "stack.h"
 #include <stdio.h>
+#include "stack.h"
+#include "tree.h"
 
-
-stack::stack(list *_beg = NULL) : beg(_beg) {};
+stack::stack(list *_beg) : beg(_beg) {};
 
 void stack::push(tree *elem)
 {

@@ -11,4 +11,4 @@ struct list
    list(tree *_elem, list *_next);
 };
 
-#endif // LIST_H
+#endif

@@ -1,10 +1,9 @@
-#pragma once
-#include "tree.h"
 #include <stdio.h>
+#include "tree.h"
+#include "stack.h"
 
-
-tree::tree(char _elem = '0', tree *_left = NULL, tree *_right = NULL) : elem(_elem), left(_left), right(_right) {}
-
+tree::tree(char _elem, tree *_left, tree *_right) : elem(_elem), left(_left), right(_right) {}
+tree::tree() : elem('0'), left(NULL), right(NULL) {}
 bool tree::input()
 {
    tree *current = this;

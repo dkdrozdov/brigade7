@@ -1,7 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "tree.h"
 #include "list.h"
 
 struct stack

@@ -1,8 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
 
-#include "stack.h"
-
 struct tree
 {
    char elem;
@@ -10,6 +8,7 @@ struct tree
    tree *right;
 
    tree(char _elem, tree *_left, tree *_right);
+   tree();
    bool input();
 };
 
