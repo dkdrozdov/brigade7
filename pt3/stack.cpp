@@ -9,12 +9,27 @@ void stack::push(tree *elem)
    beg = new list(elem, beg);
 }
 
-bool stack::pop(tree &elem)
+bool stack::empty()
 {
-   return true;
+   return !beg;
+}
+
+bool stack::pop(tree **elem)
+{
+   bool is_empty = empty();
+   if (!is_empty)
+   {
+      *elem = beg->elem;
+      list *d = beg;
+      beg = beg->next;
+
+      delete d;
+   }
+
+   return is_empty;
 }
 
 tree *stack::top()
 {
-   return NULL;
+   return beg->elem;
 }

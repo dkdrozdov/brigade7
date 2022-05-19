@@ -3,14 +3,10 @@
 #include "stack.h"
 
 tree::tree(char _elem, tree *_left, tree *_right) : elem(_elem), left(_left), right(_right) {}
-tree::tree() : elem('0'), left(NULL), right(NULL) {}
-bool tree::input()
+void tree::input(FILE *fp)
 {
    tree *current = this;
-   FILE *fp;
-
-   fopen_s(&fp, "input.txt", "r");
-   if (!fp) return false;
+   stack *s = new stack();
 
    elem = fgetc(fp);
    for (char c = fgetc(fp); c != EOF; c = fgetc(fp))
@@ -18,16 +14,44 @@ bool tree::input()
       switch (c)
       {
       case '(':
-
+         s->push(current);
+         current = current->left = new tree(fgetc(fp));
          break;
-
       case ',':
+         current = s->top();
+         current = current->right = new tree(fgetc(fp));
          break;
-
       default:
+         s->pop(&current);
          break;
       }
    }
-
-   return true;
 };
+
+int tree::pathlen(char elem)
+{
+   stack *s = new stack();
+   tree *current = this;
+   int len = 0;
+   s->push(this);
+
+   bool found = false;
+   for (;!s->empty() && !found;)
+   {
+      s->pop(&current);
+      if (current->elem == elem) 
+         found = true;
+      else
+      {
+         if (current->right) s->push(current->right);
+         if (current->left) s->push(current->left);
+      }
+   }
+
+   return len;
+}
+
+int tree::pathlen_r(char elem)
+{
+   return 0;
+}
