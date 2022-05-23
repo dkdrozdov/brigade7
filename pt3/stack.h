@@ -12,7 +12,7 @@ struct stack
    void push(tree *elem);
    bool pop(tree **elem);
    bool empty();
-   tree *top();
+   tree *peek();
 };
 
 #endif

@@ -18,7 +18,7 @@ void tree::input(FILE *fp)
          current = current->left = new tree(fgetc(fp));
          break;
       case ',':
-         current = s->top();
+         current = s->peek();
          current = current->right = new tree(fgetc(fp));
          break;
       default:
