@@ -1,17 +1,13 @@
-// В заданном бинарном дереве найти длину (число ветвей) 
-// пути от корня до ближайшей вершины со значением равным заданному
-// а) прямой обход
-// б) рекурсивный обход
 #include <stdio.h>
 #include "tree.h"
 
-bool input(tree *t, char *target)
+bool input(tree *t, char *tar)
 {
    FILE *fp;
    fopen_s(&fp, "input.txt", "r");
    if (!fp) return false;
 
-   *target = fgetc(fp);
+   *tar = fgetc(fp);
    fgetc(fp);
    t->input(fp);
 
@@ -21,13 +17,10 @@ bool input(tree *t, char *target)
 bool output(int l)
 {
    FILE *fp;
-   fopen_s(&fp, "input.txt", "w");
+   fopen_s(&fp, "output.txt", "w");
    if (!fp) return false;
 
-   if (l == -1)
-      fprintf_s(fp, "Заданный элемент не найден.");
-   else
-      fprintf_s(fp, "%d", l);
+   fprintf_s(fp, (l==-1) ? "Заданный элемент не найден." : "%d", l);
 
    return true;
 
@@ -38,7 +31,7 @@ int main()
    tree *t = new tree();
    char c;
    if (!input(t, &c)) return 1;
-   output(t->pathlen(c));
+   output(t->pathlen_r(c));
 
    return 0;
 }

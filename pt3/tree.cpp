@@ -5,7 +5,7 @@
 tree::tree(char _elem, tree *_left, tree *_right) : elem(_elem), left(_left), right(_right) {}
 void tree::input(FILE *fp)
 {
-   tree *current = this;
+   tree *t = this;
    stack *s = new stack();
 
    elem = fgetc(fp);
@@ -14,44 +14,64 @@ void tree::input(FILE *fp)
       switch (c)
       {
       case '(':
-         s->push(current);
-         current = current->left = new tree(fgetc(fp));
+         s->push(t);
+         t = t->left = new tree(fgetc(fp));
          break;
       case ',':
-         current = s->peek();
-         current = current->right = new tree(fgetc(fp));
+         t = s->top();
+         t = t->right = new tree(fgetc(fp));
          break;
       default:
-         s->pop(&current);
+         s->pop(&t);
          break;
       }
    }
 };
 
-int tree::pathlen(char elem)
+int tree::pathlen(char tar)
 {
    stack *s = new stack();
-   tree *current = this;
+   tree *t = this;
    int len = 0;
    s->push(this);
 
-   bool found = false;
-   for (;!s->empty() && !found;)
+   for ( ; !s->empty() && t->elem != tar; )
    {
-      s->pop(&current);
-      if (current->elem == elem) 
-         found = true;
+      if (t->left)
+      {
+         s->push(t);
+         t = t->left;
+         len++;
+      }
       else
       {
-         if (current->right) s->push(current->right);
-         if (current->left) s->push(current->left);
+         for ( ; !s->empty() && !(t == s->top()->left && s->top()->right); len--,
+              s->pop(&t));
+         if (!s->empty() && s->top()->right)
+            t = s->top()->right;
       }
    }
 
-   return len;
+   return t->elem == tar ? len : -1;
 }
 
-int tree::pathlen_r(char elem)
+int tree::pathlen_r(char tar)
 {
-   return 0;
+   if (elem == tar) return 0;
+
+   if (left)
+   {
+      int l = left->pathlen_r(tar);
+      if (l != -1)
+         return l + 1;
+   }
+
+   if (right)
+   {
+      int r = right->pathlen_r(tar);
+      if (r != -1)
+         return r + 1;
+   }
+
+   return -1;
 }

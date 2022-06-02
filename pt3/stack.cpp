@@ -29,7 +29,7 @@ bool stack::pop(tree **elem)
    return is_empty;
 }
 
-tree *stack::peek()
+tree *stack::top()
 {
    return beg->elem;
 }

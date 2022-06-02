@@ -9,7 +9,7 @@ struct tree
    tree *left;
    tree *right;
 
-   tree(char _elem = '0', tree *_left = NULL, tree *_right = NULL);
+   tree(char _elem = 0, tree *_left = NULL, tree *_right = NULL);
    void input(FILE *fp);
    int pathlen(char elem);
    int pathlen_r(char elem);
