@@ -1,0 +1,6 @@
+﻿  pt4-new.cpp
+D:\prog\repos\brigade7\pt4-new\pt4-new.cpp(88,30): warning C4477: 'fscanf_s' : format string '%s' requires an argument of type 'unsigned int', but variadic argument 2 has type 'unsigned __int64'
+D:\prog\repos\brigade7\pt4-new\pt4-new.cpp(88,30): message : this argument is used as a buffer size
+D:\prog\repos\brigade7\pt4-new\pt4-new.cpp(90,26): warning C4477: 'fscanf_s' : format string '%s' requires an argument of type 'unsigned int', but variadic argument 2 has type 'unsigned __int64'
+D:\prog\repos\brigade7\pt4-new\pt4-new.cpp(90,26): message : this argument is used as a buffer size
+  pt4-new.vcxproj -> D:\prog\repos\brigade7\pt4-new\x64\Debug\pt4-new.exe
